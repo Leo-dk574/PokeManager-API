@@ -1,0 +1,190 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "PokéManager API",
+    "description": "API de gerenciamento de Pokémons desenvolvida para a disciplina Tópicos Especiais em Engenharia de Software (UFF)"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Pokemons",
+      "description": "Endpoints de gerenciamento do catálogo de Pokémons"
+    }
+  ],
+  "paths": {
+    "/api/v1/pokemons": {
+      "get": {
+        "tags": [
+          "Pokemons"
+        ],
+        "summary": "Lista todos os Pokémons",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pokemons"
+        ],
+        "summary": "Cria um novo Pokémon",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/pokemons/{id}": {
+      "get": {
+        "tags": [
+          "Pokemons"
+        ],
+        "summary": "Busca um Pokémon por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pokemons"
+        ],
+        "summary": "Atualiza um Pokémon",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pokemons"
+        ],
+        "summary": "Remove um Pokémon",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pokemon": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "65efd7eb-78e5-45d1-960a-8248c96dca82"
+          },
+          "nome": {
+            "type": "string",
+            "example": "Pikachu"
+          },
+          "tipos": {
+            "type": "array",
+            "example": [
+              "Eletrico"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "nivel": {
+            "type": "number",
+            "example": 25
+          },
+          "hp": {
+            "type": "number",
+            "example": 100
+          }
+        }
+      },
+      "CreatePokemonDto": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "example": "Pikachu"
+          },
+          "tipos": {
+            "type": "array",
+            "example": [
+              "Eletrico"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "nivel": {
+            "type": "number",
+            "example": 25
+          },
+          "hp": {
+            "type": "number",
+            "example": 100
+          }
+        },
+        "required": [
+          "nome",
+          "tipos",
+          "nivel",
+          "hp"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "Pokémon não encontrado."
+          }
+        }
+      }
+    }
+  }
+}
