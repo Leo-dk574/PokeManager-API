@@ -40,7 +40,7 @@ const doc = {
 
 const outputFile = path.resolve(__dirname, 'swagger-output.json');
 
-// Mapeia diretamente o arquivo de rotas e o servidor
+
 const endpointsFiles = [
   path.resolve(__dirname, '../server.ts'),
   path.resolve(__dirname, '../../infrastructure/http/routes/pokemon.routes.ts'),
