@@ -6,10 +6,10 @@ const app = express();
 
 app.use(express.json());
 
-// Ativa o Swagger
+
 setupSwagger(app);
 
-// Prefixo das rotas
+
 app.use('/api/v1/pokemons', pokemonRoutes);
 
 const PORT = 3000;
