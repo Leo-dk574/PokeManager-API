@@ -1,3 +1,21 @@
-node_modules
-dist
+# Dependências
+node_modules/
+
+# Build e arquivos compilados
+dist/
+build/
+
+# Banco de dados local SQLite
+*.db
+*.db-journal
+prisma/*.db
+
+# Variáveis de ambiente e logs
 .env
+*.log
+
+# Configurações locais de IDEs e IAs
+.agents/
+.claude/
+.cursor/
+.devin/

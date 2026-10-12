@@ -40,7 +40,6 @@ const doc = {
 
 const outputFile = path.resolve(__dirname, 'swagger-output.json');
 
-
 const endpointsFiles = [
   path.resolve(__dirname, '../server.ts'),
   path.resolve(__dirname, '../../infrastructure/http/routes/pokemon.routes.ts'),

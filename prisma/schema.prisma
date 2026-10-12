@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Trainer {
+  id        String            @id @default(uuid())
+  nome      String
+  createdAt DateTime          @default(now())
+  captures  CapturedPokemon[]
+}
+
+model CapturedPokemon {
+  id          String   @id @default(uuid())
+  trainerId   String
+  trainer     Trainer  @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  pokeApiId   Int
+  nome        String
+  imagemUrl   String
+  tipos       String   // String JSON ou valores separados por vírgula
+  hpBase      Int
+  ataqueBase  Int
+  defesaBase  Int
+  isActive    Boolean  @default(true)
+  capturedAt  DateTime @default(now())
+}
