@@ -54,6 +54,20 @@ export class PokemonController {
     }
   }
 
+  // Exercício 2: Atualização do Nível via PATCH
+  async updateLevel(req: Request, res: Response): Promise<Response> {
+    try {
+      const id = req.params.id as string; // 
+      const { nivel } = req.body;
+      
+      const pokemon = await this.updatePokemonUseCase.execute(id, { nivel });
+      return res.status(200).json(pokemon);
+    } catch (error: any) {
+      const statusCode = error.message === 'Pokémon não encontrado.' ? 404 : 400;
+      return res.status(statusCode).json({ error: error.message });
+    }
+  }
+
   async delete(req: Request, res: Response): Promise<Response> {
     try {
       await this.deletePokemonUseCase.execute(req.params.id as string);

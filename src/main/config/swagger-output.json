@@ -54,6 +54,36 @@
         ],
         "summary": "Cria um novo Pokémon",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados para criação do Pokémon",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Pikachu"
+                },
+                "type": {
+                  "type": "string",
+                  "example": "Eletrico"
+                },
+                "level": {
+                  "type": "number",
+                  "example": 10
+                }
+              },
+              "required": [
+                "name",
+                "type",
+                "level"
+              ]
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -98,6 +128,29 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Dados para atualização",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Pikachu"
+                },
+                "type": {
+                  "type": "string",
+                  "example": "Eletrico"
+                },
+                "level": {
+                  "type": "number",
+                  "example": 15
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -119,6 +172,48 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/pokemons/{id}/level": {
+      "patch": {
+        "tags": [
+          "Pokemons"
+        ],
+        "summary": "Atualiza o nível de um Pokémon",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Novo nível do Pokémon",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "level": {
+                  "type": "number",
+                  "example": 25
+                }
+              },
+              "required": [
+                "level"
+              ]
             }
           }
         ],

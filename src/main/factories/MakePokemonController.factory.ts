@@ -1,4 +1,4 @@
-import { InMemoryPokemonRepository } from '@infrastructure/database/inMemoryPokemonRepository';
+import { PgPokemonRepository } from '@infrastructure/database/postgres/pg-pokemon-repository'; // Ajuste o caminho se necessário
 import { CreatePokemonUseCase } from '@application/use-cases/CreatePokemon';
 import { ListPokemonUseCase } from '@application/use-cases/ListPokemon';
 import { GetPokemonbyIdUseCase } from '@application/use-cases/GetPokemonbyId';
@@ -6,8 +6,7 @@ import { UpdatePokemonUseCase } from '@application/use-cases/UpdatePokemon';
 import { DeletePokemonUseCase } from '@application/use-cases/DeletePokemon';
 import { PokemonController } from '@infrastructure/http/controllers/pokemon.controller';
 
-// Repositório compartilhado (Singleton em memória durante a execução do servidor)
-const pokemonRepository = new InMemoryPokemonRepository();
+const pokemonRepository = new PgPokemonRepository();
 
 export function makePokemonController(): PokemonController {
   const createPokemonUseCase = new CreatePokemonUseCase(pokemonRepository);

@@ -18,6 +18,16 @@ pokemonRoutes.post('/', (req, res) => {
     #swagger.tags = ['Pokemons']
     #swagger.summary = 'Cria um novo Pokémon'
     #swagger.path = '/api/v1/pokemons'
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Dados para criação do Pokémon',
+      required: true,
+      schema: {
+        $name: 'Pikachu',
+        $type: 'Eletrico',
+        $level: 10
+      }
+    }
   */
   pokemonController.create(req, res);
 });
@@ -31,11 +41,39 @@ pokemonRoutes.get('/:id', (req, res) => {
   pokemonController.getById(req, res);
 });
 
+// Exercício 2: Atualização de Nível (PATCH)
+pokemonRoutes.patch('/:id/level', (req, res) => {
+  /* 
+    #swagger.tags = ['Pokemons']
+    #swagger.summary = 'Atualiza o nível de um Pokémon'
+    #swagger.path = '/api/v1/pokemons/{id}/level'
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Novo nível do Pokémon',
+      required: true,
+      schema: {
+        $level: 25
+      }
+    }
+  */
+  pokemonController.updateLevel(req, res);
+});
+
 pokemonRoutes.put('/:id', (req, res) => {
   /* 
     #swagger.tags = ['Pokemons']
     #swagger.summary = 'Atualiza um Pokémon'
     #swagger.path = '/api/v1/pokemons/{id}'
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Dados para atualização',
+      required: true,
+      schema: {
+        name: 'Pikachu',
+        type: 'Eletrico',
+        level: 15
+      }
+    }
   */
   pokemonController.update(req, res);
 });
