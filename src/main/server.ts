@@ -11,6 +11,13 @@ app.use(express.json());
 
 setupSwagger(app);
 
+app.get('/', (req: Request, res: Response) => {
+  return res.status(200).json({
+    message: 'PokeManager API está online!',
+    docs: '/swagger',
+  });
+});
+
 app.use('/api/v1/pokemons', pokemonRoutes);
 app.use('/api/v1', trainerRoutes);
 app.use('/api/v1', pokedexRoutes);
@@ -31,9 +38,9 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3333;
 
 app.listen(PORT, () => {
   console.log(`Servidor a rodar na porta ${PORT}`);
-  console.log(`Swagger UI disponível em: http://localhost:${PORT}/docs`);
+  console.log(`Swagger UI disponível em: http://localhost:${PORT}/swagger`);
 });

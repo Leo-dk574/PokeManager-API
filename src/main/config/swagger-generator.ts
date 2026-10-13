@@ -8,7 +8,7 @@ const doc = {
     description:
       'API de gerenciamento de Pokémons desenvolvida para a disciplina Tópicos Especiais em Engenharia de Software (UFF)',
   },
-  host: 'localhost:3000',
+  host: 'localhost:3333',
   schemes: ['http'],
   consumes: ['application/json'],
   produces: ['application/json'],
@@ -16,6 +16,14 @@ const doc = {
     {
       name: 'Pokemons',
       description: 'Endpoints de gerenciamento do catálogo de Pokémons',
+    },
+    {
+      name: 'Trainers',
+      description: 'Endpoints de gerenciamento de Treinadores',
+    },
+    {
+      name: 'Pokedex',
+      description: 'Endpoints de gerenciamento da Pokédex / Capturas',
     },
   ],
   definitions: {
@@ -33,7 +41,7 @@ const doc = {
       $hp: 100,
     },
     ErrorResponse: {
-      error: 'Pokémon não encontrado.',
+      error: 'Recurso não encontrado.',
     },
   },
 };
@@ -43,6 +51,8 @@ const outputFile = path.resolve(__dirname, 'swagger-output.json');
 const endpointsFiles = [
   path.resolve(__dirname, '../server.ts'),
   path.resolve(__dirname, '../../infrastructure/http/routes/pokemon.routes.ts'),
+  path.resolve(__dirname, '../../infrastructure/http/routes/trainer.routes.ts'),
+  path.resolve(__dirname, '../../infrastructure/http/routes/pokedex.routes.ts'), 
 ];
 
 swaggerAutogen({ openapi: '3.0.0' })(outputFile, endpointsFiles, doc);

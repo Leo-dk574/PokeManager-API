@@ -8,6 +8,12 @@ export const setupSwagger = (app: Express): void => {
 
   if (fs.existsSync(swaggerFile)) {
     const swaggerDocument = JSON.parse(fs.readFileSync(swaggerFile, 'utf8'));
+
+    
+    app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+    
+    app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   } else {
     console.warn(

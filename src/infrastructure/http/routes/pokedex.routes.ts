@@ -8,6 +8,10 @@ const controller = new PokedexController();
 
 pokedexRoutes.get(
   '/pokedex/search',
+  /* 
+    #swagger.tags = ['Pokedex']
+    #swagger.summary = 'Pesquisa Pokémons na Pokédex'
+  */
   validateRequest({ query: searchPokemonQuerySchema }),
   controller.search
 );

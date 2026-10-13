@@ -7,16 +7,34 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/"
+      "url": "http://localhost:3333/"
     }
   ],
   "tags": [
     {
       "name": "Pokemons",
       "description": "Endpoints de gerenciamento do catálogo de Pokémons"
+    },
+    {
+      "name": "Trainers",
+      "description": "Endpoints de gerenciamento de Treinadores"
+    },
+    {
+      "name": "Pokedex",
+      "description": "Endpoints de gerenciamento da Pokédex / Capturas"
     }
   ],
   "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/pokemons": {
       "get": {
         "tags": [
@@ -110,6 +128,82 @@
           }
         }
       }
+    },
+    "/trainers": {
+      "post": {
+        "tags": [
+          "Trainers"
+        ],
+        "summary": "Cria um novo treinador",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/trainers/{id}/captures": {
+      "post": {
+        "tags": [
+          "Trainers"
+        ],
+        "summary": "Regista a captura de um Pokémon",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/trainers/{id}/team": {
+      "get": {
+        "tags": [
+          "Trainers"
+        ],
+        "summary": "Lista a equipa do treinador",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/pokedex/search": {
+      "get": {
+        "tags": [
+          "Pokedex"
+        ],
+        "summary": "Pesquisa Pokémons na Pokédex",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "components": {
@@ -181,7 +275,7 @@
         "properties": {
           "error": {
             "type": "string",
-            "example": "Pokémon não encontrado."
+            "example": "Recurso não encontrado."
           }
         }
       }
